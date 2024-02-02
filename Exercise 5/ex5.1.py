@@ -24,14 +24,25 @@ def binary_search(data, low, high, x):
  
     else:
         return -1
-'''
 
+def for_loop_linear():
+    y = 1000
+    for i in range(1, 7):
+        data = list(range(1, y+1))
+        
+
+def for_loop_binary():
+    y = 1000
+    for i in range(1, 7):
+        data = list(range(1, y+1))
+
+'''
+y = 1000
 for i in range (1, 7):
-    data = list(range(1, y+1))
-    ltime = timeit.repeat(setup=setupcode,stmt='linear_search(data, rand.randint(1, 1000))',repeat=1000, number=100)
-    ##print("The linear search took", ltime,"seconds to find the index", x,"in the", y,"element data vector")
-    btime = timeit.repeat(setup=setupcode,stmt='binary_search(data, 0, y-1, x = rand.randint(1, 1000))',repeat=1000, number=100)
-    ##print("The binary search took", btime,"seconds to find the index", x,"in the", y,"element data vector")
+    ltime = timeit.repeat(setup=setupcode,stmt='for_loop_linear()',repeat=1000, number=100)
+    ##print("The linear search took", ltime,"seconds to find the index in the", y,"element data vector")
+    btime = timeit.repeat(setup=setupcode,stmt='for_loop_binary()',repeat=1000, number=100)
+    ##print("The binary search took", btime,"seconds to find the index in the", y,"element data vector")
     y = y * 2
 
 

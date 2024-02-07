@@ -39,10 +39,12 @@ def for_loop_binary():
 '''
 y = 1000
 for i in range (1, 7):
-    ltime = timeit.repeat(setup=setupcode,stmt='for_loop_linear()',repeat=1000, number=100)
-    ##print("The linear search took", ltime,"seconds to find the index in the", y,"element data vector")
-    btime = timeit.repeat(setup=setupcode,stmt='for_loop_binary()',repeat=1000, number=100)
-    ##print("The binary search took", btime,"seconds to find the index in the", y,"element data vector")
+    l = timeit.repeat(setup=setupcode,stmt='for_loop_linear()',repeat=1000, number=100)
+    ltime = sum(l) / len(l)
+    print("The linear search took", ltime,"seconds to find the index in the", y,"element data vector\n")
+    b = timeit.repeat(setup=setupcode,stmt='for_loop_binary()',repeat=1000, number=100)
+    btime = sum(b) / len(b)
+    print("The binary search took", btime,"seconds to find the index in the", y,"element data vector\n")
     y = y * 2
 
 

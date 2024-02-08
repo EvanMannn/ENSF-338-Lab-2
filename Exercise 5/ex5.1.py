@@ -46,10 +46,10 @@ ltime= []
 btime = []
 ylist = [1000, 2000, 4000, 8000, 16000, 32000]
 for i in range (1, 7):
-    l = timeit.repeat(setup=(setupcode) , stmt='linear(y)',repeat=100, number=10, globals=locals())
+    l = timeit.repeat(setup=(setupcode) , stmt='linear(y)',repeat=1000, number=100, globals=locals())
     ltime.append(sum(l) / len(l)) 
     print("The linear search took an average of", ltime[i-1],"seconds to find the index in the", y,"element data vector\n")
-    b = timeit.repeat(setup=(setupcode), stmt='binary(y)',repeat=100, number=10, globals=locals())
+    b = timeit.repeat(setup=(setupcode), stmt='binary(y)',repeat=1000, number=100, globals=locals())
     btime.append(sum(b) / len(b))
     print("The binary search took an average of", btime[i-1],"seconds to find the index in the", y,"element data vector\n")
     y = y * 2
@@ -70,8 +70,9 @@ plt.title("Linear Search vs Binary Search")
 plt.grid(True)
 plt.show()
 
-#The
-
+#The linear interpolation is a linear function, with the time needed increases consistently with data size O(n)
+#The binary interpolation is a logarithimic function, with time needed increasing less and less with more data size O(log n)
+#Yes these are the results we expected, linear search time increases linearly and binary increases logarithimically 
 
 
 

@@ -1,6 +1,6 @@
-import random as rand
 import timeit
 setupcode='''
+import random as rand
 def linear_search(data, x):
  
     for i in range(len(data)):
@@ -25,24 +25,25 @@ def binary_search(data, low, high, x):
     else:
         return -1
 
-def for_loop_linear():
-    y = 1000
-    for i in range(1, 7):
-        data = list(range(1, y+1))
+def linear(y):
+    data = list(range(1, y+1))
+    x = rand.randint(1, y)
+    linear_search(data, x)
+
         
 
-def for_loop_binary():
-    y = 1000
-    for i in range(1, 7):
-        data = list(range(1, y+1))
+def binary(y):
+    data = list(range(1, y+1))
+    x = rand.randint(1, y)
+    binary_search(data, 0, y-1, x)
 
 '''
 y = 1000
 for i in range (1, 7):
-    l = timeit.repeat(setup=setupcode,stmt='for_loop_linear()',repeat=1000, number=100)
+    l = timeit.repeat(setup=(setupcode) , stmt='linear(y)',repeat=1000, number=100, globals=locals())
     ltime = sum(l) / len(l)
     print("The linear search took", ltime,"seconds to find the index in the", y,"element data vector\n")
-    b = timeit.repeat(setup=setupcode,stmt='for_loop_binary()',repeat=1000, number=100)
+    b = timeit.repeat(setup=(setupcode), stmt='binary(y)',repeat=1000, number=100, globals=locals())
     btime = sum(b) / len(b)
     print("The binary search took", btime,"seconds to find the index in the", y,"element data vector\n")
     y = y * 2
